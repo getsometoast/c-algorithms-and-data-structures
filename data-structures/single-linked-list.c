@@ -16,7 +16,7 @@ typedef struct node {
 *node Insert(node *head, int value);
 void Delete(node *head, node *nodeToDelete);
 
-/* searchs for a node by value */
+/* searchs for the node containing the value */
 *node Search(node *head, int value) {
   
   node *current = head;
@@ -42,10 +42,15 @@ void Delete(node *head, node *nodeToDelete);
   return newNode;
 }
 
-/* deletes a node */
-void Delete(node *head, node *nodeToDelete) {
+/* deletes a node that contains the value */
+void Delete(node *head, int value) {
 
-  node *
+  node *nodeToDelete = Search(head, value);
+  
+  /* find the node to delete
+   * find the node that points to nodeToDelete
+   * move pointers
+   * free memory*/
 }
 
 
