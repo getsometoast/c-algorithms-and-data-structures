@@ -16,6 +16,19 @@ typedef struct node {
 *node Insert(node *head, int value);
 void Delete(node *head, node *nodeToDelete);
 
+main() {
+  node *head = malloc(sizeof(node));
+  head->value = 123;
+
+  *head = Insert(head, 12);
+  *head = Insert(head, 4);
+  *head = Insert(head, 15);
+
+  node *four = Search(head, 4);
+  
+  Delete(head, 4);
+}
+
 /* searchs for the node containing the value */
 *node Search(node *head, int value) {
   
@@ -46,12 +59,16 @@ void Delete(node *head, node *nodeToDelete);
 void Delete(node *head, int value) {
 
   node *nodeToDelete = Search(head, value);
+  node *current = head;
+
+  while(current) {
+    if(current->next == *nodeToDelete) {
+      current->next = nodeToDelete->next;
+      break;
+    }
+
+    current = current->next;
+  }
   
-  /* find the node to delete
-   * find the node that points to nodeToDelete
-   * move pointers
-   * free memory*/
+  free(nodeToDelete);
 }
-
-
-
