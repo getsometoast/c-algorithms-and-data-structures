@@ -1,6 +1,6 @@
 /* linked lists have the following operations:
-  - search: returns pointer to node that contains the value
-  - insert: inserts value at head, returns pointer to the new head
+  - search: returns pointer to node that contains the data
+  - insert: inserts data at head, returns pointer to the new head
   - delete: deletes the node, returns void
 */
 
@@ -12,13 +12,13 @@ typedef struct node {
   struct node *next;
 } node;
 
-node* Search(node *head, int value);
-node* Insert(node *head, int value);
+node* Search(node *head, int data);
+node* Insert(node *head, int data);
 void Delete(node *head, node *nodeToDelete);
 
 main() {
   node *head = malloc(sizeof(node));
-  head->value = 123;
+  head->data = 123;
 
   *head = Insert(head, 12);
   *head = Insert(head, 4);
@@ -29,14 +29,14 @@ main() {
   Delete(head, 4);
 }
 
-/* searchs for the node containing the value */
-node* Search(node *head, int value) {
+/* searchs for the node containing the data */
+node* Search(node *head, int data) {
   
   node *current = head;
   
   while(current) {
     
-    if(current->value == value) {
+    if(current->data == data) {
       return current;
     }
     
@@ -45,20 +45,20 @@ node* Search(node *head, int value) {
 }
 
 /* inserts at the head of the list */
-node* Insert(node *head, int value) {
+node* Insert(node *head, int data) {
   
   node *newNode = malloc(sizeof(node));
 
-  newNode->value = value;
+  newNode->data = data;
   newNode->next = head;
 
   return newNode;
 }
 
-/* deletes a node that contains the value */
-void Delete(node *head, int value) {
+/* deletes a node that contains the data */
+void Delete(node *head, int data) {
 
-  node *nodeToDelete = Search(head, value);
+  node *nodeToDelete = Search(head, data);
   node *current = head;
 
   while(current) {
