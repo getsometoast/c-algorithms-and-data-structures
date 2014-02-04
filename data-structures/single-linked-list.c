@@ -31,7 +31,7 @@ int main() {
   printf("data at head: %d\n\n", head->data);
   
   node *four = Search(head, 4);
-  printf("data of four: %d\n\n", head->data);
+  printf("data of four: %d\n\n", four->data);
 
   PrintList(head);
   Delete(head, 4);
@@ -89,7 +89,7 @@ void Delete(node *head, int data) {
   node *current = head;
 
   while(current) {
-    if(current->next == &nodeToDelete) {
+    if(current->next == nodeToDelete) {
       current->next = nodeToDelete->next;
       break;
     }
