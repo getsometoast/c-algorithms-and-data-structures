@@ -22,6 +22,7 @@ int main() {
   node *head = malloc(sizeof(node));
   head->data = 123;
 
+  printf("inserting some data into the head of the list\n\n");
   printf("data at head: %d\n", head->data);
   head = Insert(head, 12);
   printf("data at head: %d\n", head->data);
@@ -30,9 +31,12 @@ int main() {
   head = Insert(head, 15);
   printf("data at head: %d\n\n", head->data);
   
+  printf("searching for the data, 4\n\n");
   node *four = Search(head, 4);
-  printf("data of four: %d\n\n", four->data);
+  printf("data of four: %d\n", four->data);
+  printf("next pointer of four: %p\n\n", four->next);
 
+  printf("removing the value 4\n\n");
   PrintList(head);
   Delete(head, 4);
   PrintList(head);
