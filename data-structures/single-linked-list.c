@@ -12,8 +12,8 @@ typedef struct node {
   struct node *next;
 } node;
 
-*node Search(node *head, int value);
-*node Insert(node *head, int value);
+node* Search(node *head, int value);
+node* Insert(node *head, int value);
 void Delete(node *head, node *nodeToDelete);
 
 main() {
@@ -30,7 +30,7 @@ main() {
 }
 
 /* searchs for the node containing the value */
-*node Search(node *head, int value) {
+node* Search(node *head, int value) {
   
   node *current = head;
   
@@ -45,7 +45,7 @@ main() {
 }
 
 /* inserts at the head of the list */
-*node Insert(node *head, int value) {
+node* Insert(node *head, int value) {
   
   node *newNode = malloc(sizeof(node));
 
