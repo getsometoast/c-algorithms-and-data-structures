@@ -67,6 +67,8 @@ node* Search(node *head, int data) {
     
     current = current->next;
   }
+
+  return NULL;
 }
 
 /* inserts at the head of the list */
