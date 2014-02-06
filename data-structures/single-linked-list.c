@@ -15,7 +15,7 @@ typedef struct node {
 
 node* Search(node *head, int data);
 node* Insert(node *head, int data);
-void Delete(node *head, int data);
+node* Delete(node *head, int data);
 void PrintList(node *head);
 
 int main() {
@@ -38,7 +38,7 @@ int main() {
 
   printf("removing the value 4\n\n");
   PrintList(head);
-  Delete(head, 4);
+  head = Delete(head, 4);
   PrintList(head);
 
   return 0;
@@ -87,19 +87,14 @@ node* Insert(node *head, int data) {
 }
 
 /* deletes a node that contains the data */
-void Delete(node *head, int data) {
+node* Delete(node *head, int data) {
 
   node *nodeToDelete = Search(head, data);
-  node *current = head;
+  node *newHead = head->next;
 
-  while(current) {
-    if(current->next == nodeToDelete) {
-      current->next = nodeToDelete->next;
-      break;
-    }
+  nodeToDelete->data = head->data;
 
-    current = current->next;
-  }
-  
-  free(nodeToDelete);
+  free(head);
+
+  return newHead;
 }
