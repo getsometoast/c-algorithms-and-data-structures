@@ -12,3 +12,11 @@
 #include <stdio.h>
 
 int Search(int key);
+void Insert(int value);
+void Delete(int key);
+int Successor(int Key);
+int Predecessor(int key);
+int Minimum();
+int Maximum();
+
+
