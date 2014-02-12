@@ -15,7 +15,8 @@ typedef struct node {
   
   int value;
   int key;
-
+  
+  node *parent;
   node *leftChild;
   node *rightChild;
 
@@ -29,11 +30,11 @@ typedef struct dictionary {
 
 node* Search(node *root, int key);
 node* Insert(node *root, node value);
-void Delete(dictionary *dict, node *value);
-int Successor(dictionary *dict, int Key);
-int Predecessor(dictionary *dict, int key);
-int Minimum(dictionary *dict);
-int Maximum(dictionary *dict);
+void Delete(node *root, node *value);
+node* Successor(node *root, int Key);
+node* Predecessor(node *root, int key);
+int Minimum(node *root);
+int Maximum(node *root);
 
 int main() {
   
@@ -66,7 +67,7 @@ node* Search(node *root, int key) {
 }
 
 /* returns pointer to the current root of the tree after the value has been added. 
- * must maintain the balanced tree (this currently doesn't)
+ * must maintain the balanced tree by inserting items in a random order.
  * */
 node* Insert(node *root, item value) {
   
@@ -90,9 +91,27 @@ node* Insert(node *root, item value) {
     Insert(root->rightChild, value);
 }
 
-/* constant time */
+/* worst case could be n if the tree weren't balanced, average is log(n) */
 void Delete(node *head, item *value) {
-  /* need to remove the value but also make sure the tree is still balanced. */
+  value->parent->leftChild = value->leftChild;
+  value->parent->rightChild = value->rightChild;
+
+  o
+  |
+ / \
+o   o
+   / \
+  o   o
+
+
+  free(value);
 }
+
+/* returns pointer to the node that is the successor to the key */
+node* successor(node *root, int key) {
+  
+}
+
+
 
 
