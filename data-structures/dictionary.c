@@ -29,7 +29,7 @@ typedef struct dictionary {
 } dictionary;
 
 node* Search(node *root, int key);
-node* Insert(node *root, node value);
+node* Insert(node *root, node value, node *parent);
 void Delete(node *root, node *value);
 node* Successor(node *root, int Key);
 node* Predecessor(node *root, int key);
@@ -69,26 +69,23 @@ node* Search(node *root, int key) {
 /* returns pointer to the current root of the tree after the value has been added. 
  * must maintain the balanced tree by inserting items in a random order.
  * */
-node* Insert(node *root, item value) {
+void Insert(node *root, node value, node *parent) {
   
   if(value->key == root->key)
     return &root; /* no duplicates */
 
-  if(value->key < root->key && root->leftChild == NULL)
+  if(root == NULL)
   {
-    root->leftChild = value;
-    return theRoot;
+    value->parent = parent;
+    root = value;
+    
+    return;
   }
 
-  if(value->key > root->key && root->rightChild == NULL)
-  {
-    root->rightChild = value;
-    return theRoot;
-  }
-  else if(value->key < root->key)
-    Insert(root->leftChild, value);
-  else if(value->key > root->key)
-    Insert(root->rightChild, value);
+  if(value->key < root->key)
+    Insert(root->leftChild, value, root);
+  else
+    Insert(root->rightChild, value, root);
 }
 
 /* worst case could be n if the tree weren't balanced, average is log(n) */
